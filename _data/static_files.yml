@@ -1,4 +1,91 @@
 ---
+- path: all the favs/ameleie.gif
+  modified_time: 1454460709
+  extname: ".gif"
+- path: all the favs/bacon.gif
+  modified_time: 1454460524
+  extname: ".gif"
+- path: all the favs/bad feeling.gif
+  modified_time: 1397929981
+  extname: ".gif"
+- path: all the favs/brando.gif
+  modified_time: 1454460702
+  extname: ".gif"
+- path: all the favs/butterflies.gif
+  modified_time: 1413260863
+  extname: ".gif"
+- path: all the favs/cinco.gif
+  modified_time: 1430936584
+  extname: ".gif"
+- path: all the favs/confetti.gif
+  modified_time: 1494514477
+  extname: ".gif"
+- path: all the favs/corgis.gif
+  modified_time: 1373666454
+  extname: ".gif"
+- path: all the favs/crab-knife.gif
+  modified_time: 1455825210
+  extname: ".gif"
+- path: all the favs/dont.gif
+  modified_time: 1454116802
+  extname: ".gif"
+- path: all the favs/espresso.gif
+  modified_time: 1367873300
+  extname: ".gif"
+- path: all the favs/i made this.gif
+  modified_time: 1494031516
+  extname: ".gif"
+- path: all the favs/Marty-McFly-Confused-In-Back-To-The-Future-Gif.gif
+  modified_time: 1412038178
+  extname: ".gif"
+- path: all the favs/money.gif
+  modified_time: 1454460426
+  extname: ".gif"
+- path: all the favs/mordor.gif
+  modified_time: 1454460453
+  extname: ".gif"
+- path: all the favs/notdeadyet.gif
+  modified_time: 1431454031
+  extname: ".gif"
+- path: all the favs/pingpong.gif
+  modified_time: 1412211572
+  extname: ".gif"
+- path: all the favs/pouring.gif
+  modified_time: 1414610208
+  extname: ".gif"
+- path: all the favs/ram.gif
+  modified_time: 1379098743
+  extname: ".gif"
+- path: all the favs/Royal-Tenenbaums-Bill-Murray.gif
+  modified_time: 1427143433
+  extname: ".gif"
+- path: all the favs/Royal-Tenenbaums-endless-stare.gif
+  modified_time: 1427143402
+  extname: ".gif"
+- path: all the favs/shinging.gif
+  modified_time: 1454460696
+  extname: ".gif"
+- path: all the favs/shopping basket.gif
+  modified_time: 1429985641
+  extname: ".gif"
+- path: all the favs/sliding.gif
+  modified_time: 1445991039
+  extname: ".gif"
+- path: all the favs/stephen-watermelon.gif
+  modified_time: 1454460433
+  extname: ".gif"
+- path: all the favs/swedish chef.gif
+  modified_time: 1392246104
+  extname: ".gif"
+- path: all the favs/This-Is-Why-We-Cant-Have-Nice-Things-Gif.gif
+  modified_time: 1471541688
+  extname: ".gif"
+- path: all the favs/tumblr_molutvB3Df1ql82o1o1_250.gif
+  modified_time: 1371709629
+  extname: ".gif"
+- path: all the favs/window.gif
+  modified_time: 1431037948
+  extname: ".gif"
 - path: amazed/hepburn-sunglasses-off.gif
   modified_time: 1494031008
   extname: ".gif"
@@ -15,9 +102,6 @@
   modified_time: 1495588695
   extname: ".gif"
 - path: bboy/bboy-bear.gif
-  modified_time: 1495588695
-  extname: ".gif"
-- path: bboy/bboy-jag.gif
   modified_time: 1495588695
   extname: ".gif"
 - path: bboy/camouflage-bboy.gif
@@ -638,96 +722,6 @@
 - path: honey-badger/honeybadger-pixel.gif
   modified_time: 1494031010
   extname: ".gif"
-- path: hubbers/1-50-Cent-Laugh-Off-JAG.gif
-  modified_time: 1495588695
-  extname: ".gif"
-- path: hubbers/bboy-jag.gif
-  modified_time: 1495588695
-  extname: ".gif"
-- path: hubbers/github-dodgeball-tnm.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-afeld-hearteyes.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-balevine-laughing.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-balevine-metal.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-balevine-newsroom.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-angry.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-confused.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-excited.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-hearteyes.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-indifference.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-kudos.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-laughing.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-metal.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-newsroom.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-rollingeyes.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-sad.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jglovier-wink.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jonrohan-confused.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-jonrohan-metal.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-schacon-metal.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/hubmojis-technoweenie-confused.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/jakeboxer-uh-uh-whiteboard.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/jasonsalez-dj.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/joao-magic.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/joel-tim-toast.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/mdo-hiding.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/rtomayko-dance.gif
-  modified_time: 1495588696
-  extname: ".gif"
-- path: hubbers/yes-github-yissssss.gif
-  modified_time: 1495588696
-  extname: ".gif"
 - path: hug/cartoon-kid-hug.gif
   modified_time: 1494031010
   extname: ".gif"
@@ -750,21 +744,6 @@
   modified_time: 1494031010
   extname: ".gif"
 - path: impressed/sunglasses-off-loop.gif
-  modified_time: 1494031010
-  extname: ".gif"
-- path: jurassic-park/come-quickly-comon.gif
-  modified_time: 1494031010
-  extname: ".gif"
-- path: jurassic-park/dennis-nedry-ah-ah-ah.gif
-  modified_time: 1494031010
-  extname: ".gif"
-- path: jurassic-park/hold-onto-ur-butts.gif
-  modified_time: 1494031010
-  extname: ".gif"
-- path: jurassic-park/jello-jiggle.gif
-  modified_time: 1494031010
-  extname: ".gif"
-- path: jurassic-park/life-finds-a-way.gif
   modified_time: 1494031010
   extname: ".gif"
 - path: laughing/50-cent-laughing-small.gif
@@ -872,9 +851,6 @@
 - path: nailed-it/nailed-it-glasses.gif
   modified_time: 1494031010
   extname: ".gif"
-- path: nailed-it/nailed-it-phone-dunk.gif
-  modified_time: 1494031010
-  extname: ".gif"
 - path: napoleon/napoleon.gif
   modified_time: 1494031010
   extname: ".gif"
@@ -958,9 +934,6 @@
   extname: ".gif"
 - path: snaps/snappy.gif
   modified_time: 1468685288
-  extname: ".gif"
-- path: support/care-bear-stare.gif
-  modified_time: 1494031011
   extname: ".gif"
 - path: support/you-can-do-it-o.gif
   modified_time: 1494031011
