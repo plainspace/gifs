@@ -968,8 +968,32 @@
 - path: matrix/matrix.gif
   modified_time: 1454460685
   extname: ".gif"
+- path: miazaki/totoro-nap.gif
+  modified_time: 1512111664
+  extname: ".gif"
+- path: miazaki/totoro-little.gif
+  modified_time: 1512111800
+  extname: ".gif"
 - path: miazaki/mononoke.gif
   modified_time: 1475178274
+  extname: ".gif"
+- path: miazaki/kiki bread.gif
+  modified_time: 1512111822
+  extname: ".gif"
+- path: miazaki/haku.gif
+  modified_time: 1512111786
+  extname: ".gif"
+- path: miazaki/soot.gif
+  modified_time: 1512111655
+  extname: ".gif"
+- path: miazaki/ponyo.gif
+  modified_time: 1512111641
+  extname: ".gif"
+- path: miazaki/kiki.gif
+  modified_time: 1512111737
+  extname: ".gif"
+- path: miazaki/totoro.gif
+  modified_time: 1512111616
   extname: ".gif"
 - path: big-lebowski/dancing.gif
   modified_time: 1494031008
