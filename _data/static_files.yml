@@ -260,6 +260,9 @@
 - path: contempt/no_way_Neil_deGrasse_Tyson.gif
   modified_time: 1494031008
   extname: ".gif"
+- path: contempt/eww-pirates.gif
+  modified_time: 1443810389
+  extname: ".gif"
 - path: contempt/Dwight-Schrute-look-of-disapproval.gif
   modified_time: 1494031008
   extname: ".gif"
@@ -272,17 +275,20 @@
 - path: contempt/stevie-mcquinn.gif
   modified_time: 1494031008
   extname: ".gif"
+- path: contempt/eww-eastwood.gif
+  modified_time: 1516856387
+  extname: ".gif"
 - path: contempt/simon-cowel-glazed-look.gif
   modified_time: 1494031008
+  extname: ".gif"
+- path: contempt/eww-work.gif
+  modified_time: 1516856368
   extname: ".gif"
 - path: contempt/max-smart-confused.gif
   modified_time: 1494031008
   extname: ".gif"
 - path: contempt/farley-weekend-update.gif
   modified_time: 1494031008
-  extname: ".gif"
-- path: contempt/eww.gif
-  modified_time: 1443810389
   extname: ".gif"
 - path: contempt/oh-please.gif
   modified_time: 1494031008
@@ -968,20 +974,50 @@
 - path: matrix/matrix.gif
   modified_time: 1454460685
   extname: ".gif"
+- path: miazaki/spirited-noface-tea.gif
+  modified_time: 1512437201
+  extname: ".gif"
 - path: miazaki/totoro-nap.gif
   modified_time: 1512111664
+  extname: ".gif"
+- path: miazaki/spirited.gif
+  modified_time: 1512437092
   extname: ".gif"
 - path: miazaki/totoro-little.gif
   modified_time: 1512111800
   extname: ".gif"
+- path: miazaki/porco.gif
+  modified_time: 1512437119
+  extname: ".gif"
 - path: miazaki/mononoke.gif
   modified_time: 1475178274
+  extname: ".gif"
+- path: miazaki/spirited-noface-tracks.gif
+  modified_time: 1512437192
+  extname: ".gif"
+- path: miazaki/porco-laugh.gif
+  modified_time: 1512437148
+  extname: ".gif"
+- path: miazaki/spirited-noface.gif
+  modified_time: 1512437174
   extname: ".gif"
 - path: miazaki/kiki bread.gif
   modified_time: 1512111822
   extname: ".gif"
+- path: miazaki/spirited-noface-rain.gif
+  modified_time: 1512437182
+  extname: ".gif"
 - path: miazaki/haku.gif
   modified_time: 1512111786
+  extname: ".gif"
+- path: miazaki/spirited-haku.gif
+  modified_time: 1512437163
+  extname: ".gif"
+- path: miazaki/totora-pop-up.gif
+  modified_time: 1512437135
+  extname: ".gif"
+- path: miazaki/nausicaa-teto.gif
+  modified_time: 1512437110
   extname: ".gif"
 - path: miazaki/soot.gif
   modified_time: 1512111655
@@ -994,6 +1030,9 @@
   extname: ".gif"
 - path: miazaki/totoro.gif
   modified_time: 1512111616
+  extname: ".gif"
+- path: miazaki/porco1.gif
+  modified_time: 1512437126
   extname: ".gif"
 - path: big-lebowski/dancing.gif
   modified_time: 1494031008
