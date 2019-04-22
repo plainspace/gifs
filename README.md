@@ -1,3 +1,4 @@
+[![Board Status](https://dev.azure.com/plainspace/59ed3e73-2d2c-4597-b8c8-8d3aa33de809/6584a0f7-5545-44ed-9a0a-528bb1464046/_apis/work/boardbadge/41b39094-11e3-432a-a256-3076958ca41f)](https://dev.azure.com/plainspace/59ed3e73-2d2c-4597-b8c8-8d3aa33de809/_boards/board/t/6584a0f7-5545-44ed-9a0a-528bb1464046/Microsoft.RequirementCategory)
 # gif storage
 
 Storage place for all my favorite gifs.
