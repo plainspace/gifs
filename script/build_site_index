@@ -6,16 +6,19 @@ require 'yaml'
 
 # --- CONFIG ---
 
-output_file = '_data/static_files.yml'
+output_yaml = '_data/static_files.yml'
+output_html = '_includes/site-index.html'
 
 important_dirs = [
   'goldblum',
-  'shoresy',
+  'fail',
   'all the favs'
 ]
 
-# All folders you want to index (important or not)
-included_dirs = Dir.glob("*").select { |d| File.directory?(d) && !d.start_with?("_") && d != "script" }
+# Include only visible top-level folders, excluding script/ and anything starting with "_"
+included_dirs = Dir.glob("*").select do |d|
+  File.directory?(d) && !d.start_with?("_") && d != "script"
+end
 
 # --- BUILD INDEX ---
 
@@ -53,9 +56,22 @@ end
 
 items.each { |item| item.delete('important_index') }
 
-# --- WRITE YAML OUTPUT ---
+# --- WRITE YAML ---
 
-FileUtils.mkdir_p(File.dirname(output_file))
-File.open(output_file, 'w') { |f| f.write(items.to_yaml) }
+FileUtils.mkdir_p(File.dirname(output_yaml))
+File.open(output_yaml, 'w') { |f| f.write(items.to_yaml) }
 
-puts "Wrote #{items.size} items to #{output_file}"
+puts "Wrote #{items.size} items to #{output_yaml}"
+
+# --- WRITE HTML INDEX ---
+
+FileUtils.mkdir_p(File.dirname(output_html))
+File.open(output_html, 'w') do |f|
+  f.puts "<ul>"
+  items.each do |item|
+    f.puts "  <li><a href='/#{item['path']}'>#{item['path']}</a></li>"
+  end
+  f.puts "</ul>"
+end
+
+puts "Wrote site index to #{output_html}"
