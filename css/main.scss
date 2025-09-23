@@ -79,7 +79,7 @@ body{
 
   .img-preview {
     width: 100%;
-    height: 100%;
+    height: 170px;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -89,22 +89,25 @@ body{
     @media (max-width: 400px) { height: 200px; }
   }
 
-  .banner-img {
-    width: 100%;
-    z-index: 1;
+  .banner-img,
+  .gif-preview {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
   }
 
   .gif-preview {
-    width: 100%;
-    min-height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
     display: none;
 
-    &[src*=".gif"] { display: block; }
-
+    &[src*=".gif"] {
+      display: block;
+    }
   }
 
   a {
