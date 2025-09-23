@@ -8,7 +8,7 @@ require 'yaml'
 OUTPUT_YAML = '_data/static_files.yml'
 OUTPUT_HTML = '_includes/site-index.html'
 INCLUDE_EXTENSIONS = ['.gif']
-IMPORTANT_DIRS = %w[icons pixelated homages] # in desired order
+IMPORTANT_DIRS = ['shoresy', 'all the favs', 'goldblum']
 
 # --- COLLECT FILES ---
 
@@ -49,12 +49,15 @@ FileUtils.mkdir_p(File.dirname(OUTPUT_HTML))
 File.open(OUTPUT_HTML, 'w') do |f|
   f.puts "<ul>"
 
+  # Order folders: important ones first in specified order, then the rest sorted alphabetically
   grouped = files.group_by { |item| item['path'].split('/').first }
+  ordered_folders = IMPORTANT_DIRS + (grouped.keys - IMPORTANT_DIRS).sort
 
-  grouped.each do |folder, folder_files|
+  ordered_folders.each do |folder|
+    next unless grouped[folder]
     f.puts "  <li>#{folder}"
     f.puts "    <ul>"
-    folder_files.each do |item|
+    grouped[folder].each do |item|
       path = item['path']
       filename = File.basename(path)
       f.puts "      <li><a href=\"#{path}\" title=\"#{path}\" class=\"gif\">#{filename}</a></li>"
