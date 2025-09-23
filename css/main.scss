@@ -51,7 +51,8 @@ body{
 }
 
 .page-header {
-  width: 300px; height: 100%;
+  width: 300px;
+  height: 100%;
   background-color: $navy_bg;
   position: fixed;
   left: 0; top: 0; bottom: 0;
@@ -59,6 +60,9 @@ body{
   text-align: center;
   font-size: 14px;
   color: $blue_text_lht;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
   @media (max-width: 600px) {
     position: static;
@@ -75,7 +79,7 @@ body{
 
   .img-preview {
     width: 100%;
-    height: 170px;
+    height: 100%;
     position: relative;
     z-index: 1;
     overflow: hidden;

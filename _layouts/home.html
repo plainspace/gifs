@@ -10,11 +10,11 @@
       <img src="excited/aha.gif" alt="" class="banner-img">
       <img src="" id="preview" class="gif-preview">
     </div>
-    {{ content }}
+    <div>{{ content }}</div>
   </header>
 
   <div class="gif-listing">
-  {% include site-index.html %}
+    {% include site-index.html %}
   </div>
 
   <script type="text/javascript">
@@ -25,7 +25,7 @@
     };
 
     var links = document.getElementsByClassName("gif");
-    for(var i=0; i<links.length; i++) {
+    for (var i = 0; i < links.length; i++) {
       links[i].addEventListener("mouseover", hoverListener);
     }
   </script>
