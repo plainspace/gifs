@@ -5,66 +5,65 @@ require 'fileutils'
 require 'yaml'
 
 # --- CONFIG ---
+OUTPUT_YAML = '_data/static_files.yml'
+OUTPUT_HTML = '_includes/site-index.html'
+INCLUDE_EXTENSIONS = ['.gif']
+IMPORTANT_DIRS = %w[icons pixelated homages] # in desired order
 
-output_file = '_data/static_files.yml'
+# --- COLLECT FILES ---
 
-important_dirs = [
-  'goldblum',
-  'fail',
-  'all the favs'
-]
-
-# --- BUILD INDEX ---
-
-items = []
-
-Dir["{*/**/*}"].each do |path|
-  next unless File.file?(path)
-
-  extname = File.extname(path)
-  modified_time = File.mtime(path).to_i
-
-  item = {
-    'path' => path,
-    'modified_time' => modified_time,
-    'extname' => extname
-  }
-
-  important_index = important_dirs.find_index { |dir| path.start_with?("#{dir}/") }
-  item['important_index'] = important_index if important_index
-
-  items << item
+def collect_files
+  Dir.glob("**/*")
+    .select { |f| File.file?(f) && INCLUDE_EXTENSIONS.include?(File.extname(f)) }
+    .map do |f|
+      {
+        'path' => f,
+        'modified_time' => File.mtime(f).to_i,
+        'extname' => File.extname(f)
+      }
+    end
 end
 
-# --- SORTING ---
+files = collect_files
 
-items.sort_by! do |item|
-  if item.key?('important_index')
-    [0, item['important_index'], item['path']]
-  else
-    [1, item['path']]
-  end
+# --- MARK IMPORTANT FILES ---
+files.each do |file|
+  top_dir = file['path'].split('/').first
+  file['important'] = IMPORTANT_DIRS.include?(top_dir)
 end
 
-items.each { |item| item.delete('important_index') }
+# --- SORT FILES ---
+files.sort_by! do |file|
+  importance = file['important'] ? IMPORTANT_DIRS.index(file['path'].split('/').first) : IMPORTANT_DIRS.length
+  [importance, file['path']]
+end
 
 # --- WRITE YAML ---
-
-FileUtils.mkdir_p(File.dirname(output_file))
-File.open(output_file, 'w') do |f|
-  f.write(items.to_yaml)
-end
-
-puts "Wrote #{items.size} items to #{output_file}"
+FileUtils.mkdir_p(File.dirname(OUTPUT_YAML))
+File.write(OUTPUT_YAML, files.to_yaml)
+puts "Wrote #{files.length} items to #{OUTPUT_YAML}"
 
 # --- WRITE HTML ---
+FileUtils.mkdir_p(File.dirname(OUTPUT_HTML))
 
-File.open('_includes/site-index.html', 'w') do |f|
+File.open(OUTPUT_HTML, 'w') do |f|
   f.puts "<ul>"
-  items.each do |item|
-    f.puts "  <li><a href=\"/#{item['path']}\">#{item['path']}</a></li>"
+
+  grouped = files.group_by { |item| item['path'].split('/').first }
+
+  grouped.each do |folder, folder_files|
+    f.puts "  <li>#{folder}"
+    f.puts "    <ul>"
+    folder_files.each do |item|
+      path = item['path']
+      filename = File.basename(path)
+      f.puts "      <li><a href=\"#{path}\" title=\"#{path}\" class=\"gif\">#{filename}</a></li>"
+    end
+    f.puts "    </ul>"
+    f.puts "  </li>"
   end
+
   f.puts "</ul>"
 end
 
-puts "Wrote HTML index to _includes/site-index.html"
+puts "Wrote HTML index to #{OUTPUT_HTML}"
