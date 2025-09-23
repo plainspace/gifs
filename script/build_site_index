@@ -6,8 +6,7 @@ require 'yaml'
 
 # --- CONFIG ---
 
-output_yaml = '_data/static_files.yml'
-output_html = '_includes/site-index.html'
+output_file = '_data/static_files.yml'
 
 important_dirs = [
   'goldblum',
@@ -15,33 +14,26 @@ important_dirs = [
   'all the favs'
 ]
 
-# Include only visible top-level folders, excluding script/ and anything starting with "_"
-included_dirs = Dir.glob("*").select do |d|
-  File.directory?(d) && !d.start_with?("_") && d != "script"
-end
-
 # --- BUILD INDEX ---
 
 items = []
 
-included_dirs.each do |dir|
-  Dir.glob("#{dir}/**/*").each do |path|
-    next unless File.file?(path)
+Dir["{*/**/*}"].each do |path|
+  next unless File.file?(path)
 
-    extname = File.extname(path)
-    modified_time = File.mtime(path).to_i
+  extname = File.extname(path)
+  modified_time = File.mtime(path).to_i
 
-    item = {
-      'path' => path,
-      'modified_time' => modified_time,
-      'extname' => extname
-    }
+  item = {
+    'path' => path,
+    'modified_time' => modified_time,
+    'extname' => extname
+  }
 
-    important_index = important_dirs.find_index { |important| path.start_with?("#{important}/") }
-    item['important_index'] = important_index if important_index
+  important_index = important_dirs.find_index { |dir| path.start_with?("#{dir}/") }
+  item['important_index'] = important_index if important_index
 
-    items << item
-  end
+  items << item
 end
 
 # --- SORTING ---
@@ -58,20 +50,21 @@ items.each { |item| item.delete('important_index') }
 
 # --- WRITE YAML ---
 
-FileUtils.mkdir_p(File.dirname(output_yaml))
-File.open(output_yaml, 'w') { |f| f.write(items.to_yaml) }
+FileUtils.mkdir_p(File.dirname(output_file))
+File.open(output_file, 'w') do |f|
+  f.write(items.to_yaml)
+end
 
-puts "Wrote #{items.size} items to #{output_yaml}"
+puts "Wrote #{items.size} items to #{output_file}"
 
-# --- WRITE HTML INDEX ---
+# --- WRITE HTML ---
 
-FileUtils.mkdir_p(File.dirname(output_html))
-File.open(output_html, 'w') do |f|
+File.open('_includes/site-index.html', 'w') do |f|
   f.puts "<ul>"
   items.each do |item|
-    f.puts "  <li><a href='/#{item['path']}'>#{item['path']}</a></li>"
+    f.puts "  <li><a href=\"/#{item['path']}\">#{item['path']}</a></li>"
   end
   f.puts "</ul>"
 end
 
-puts "Wrote site index to #{output_html}"
+puts "Wrote HTML index to _includes/site-index.html"

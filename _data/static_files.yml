@@ -182,6 +182,27 @@
 - path: all the favs/window.gif
   modified_time: 1758632939
   extname: ".gif"
+- path: _data/static_files.yml
+  modified_time: 1758643357
+  extname: ".yml"
+- path: _includes/closing-tags.html
+  modified_time: 1758632938
+  extname: ".html"
+- path: _includes/head.html
+  modified_time: 1758632938
+  extname: ".html"
+- path: _includes/site-index.html
+  modified_time: 1758643357
+  extname: ".html"
+- path: _layouts/default.html
+  modified_time: 1758632938
+  extname: ".html"
+- path: _layouts/home.html
+  modified_time: 1758632938
+  extname: ".html"
+- path: _sass/_normalize.scss
+  modified_time: 1758632938
+  extname: ".scss"
 - path: amazed/hepburn-sunglasses-off.gif
   modified_time: 1758632939
   extname: ".gif"
@@ -1043,6 +1064,12 @@
 - path: scared/scared-cats.gif
   modified_time: 1758632940
   extname: ".gif"
+- path: script/bootstrap
+  modified_time: 1539718621
+  extname: ''
+- path: script/build_site_index
+  modified_time: 1758644637
+  extname: ''
 - path: ship/canal-ships.gif
   modified_time: 1758632940
   extname: ".gif"
