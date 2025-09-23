@@ -1,24 +1,25 @@
 ---
 ---
 
-@import "normalize";
+@import "../_sass/normalize.scss";
 
 // Mixins & Vars
 
-$navy_bg:             #263648;
-$navy_bg_light:       #2f4358;
-$blue_text_drk:       #6784a2;
-$blue_text:           #66adfb;
-$blue_text_lht:       #97afc8;
-$blue_light:          #d2dae3;
-$green:               #00bd9c;
-$red:                 #ff6d6f;
-$yellow:              #f8f65e;
-$purple:              #d070d1;
+$navy_bg: #263648;
+$navy_bg_light: #2f4358;
+$blue_text_drk: #6784a2;
+$blue_text: #66adfb;
+$blue_text_lht: #97afc8;
+$blue_light: #d2dae3;
+$green: #00bd9c;
+$red: #ff6d6f;
+$yellow: #f8f65e;
+$purple: #d070d1;
 
 @mixin sans {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 @mixin sans_light {
   @include sans;
   font-weight: 300;
@@ -28,6 +29,7 @@ $purple:              #d070d1;
   @include sans;
   font-weight: 400;
 }
+
 @mixin sans_extrabold {
   @include sans;
   font-weight: 800;
@@ -35,7 +37,9 @@ $purple:              #d070d1;
 
 // @group main styles --------------------
 
-html { background-color: $navy_bg; }
+html {
+  background-color: $navy_bg;
+}
 
 * {
   -webkit-box-sizing: border-box;
@@ -43,10 +47,10 @@ html { background-color: $navy_bg; }
   box-sizing: border-box;
 }
 
-body{
+body {
   @include sans_regular;
-  font-size:16px;
-  line-height:1.5;
+  font-size: 16px;
+  line-height: 1.5;
   background-color: $navy_bg_light;
 }
 
@@ -55,14 +59,16 @@ body{
   height: 100%;
   background-color: $navy_bg;
   position: fixed;
-  left: 0; top: 0; bottom: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
   color: white;
   text-align: center;
   font-size: 14px;
   color: $blue_text_lht;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 
   @media (max-width: 600px) {
     position: static;
@@ -79,40 +85,52 @@ body{
 
   .img-preview {
     width: 100%;
-    height: 170px;
+    height: auto;
     position: relative;
     z-index: 1;
     overflow: hidden;
+    padding: 10px;
 
-    @media (max-width: 600px) { height: 300px; }
-    @media (max-width: 500px) { height: 250px; }
-    @media (max-width: 400px) { height: 200px; }
+    @media (max-width: 600px) {
+      height: auto;
+    }
   }
 
-  .banner-img,
-  .gif-preview {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-  }
+  .gif-wrapper {
+    position: relative;
+    width: 100%;
 
-  .gif-preview {
-    display: none;
-
-    &[src*=".gif"] {
+    .gif-preview {
+      width: 100%;
+      height: auto;
       display: block;
+      object-fit: contain;
+    }
+
+    .copy-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      font-size: 12px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    &:hover .copy-btn {
+      opacity: 1;
     }
   }
 
   a {
     color: $green;
-    font-weight: bold; }
+    font-weight: bold;
+  }
 }
 
 .gif-listing {
@@ -120,14 +138,14 @@ body{
   padding: 20px;
   overflow: hidden;
 
-  @media (max-width: 600px) { margin-left: 0; }
+  @media (max-width: 600px) {
+    margin-left: 0;
+  }
 
-  // Style the list of categories
-
-  > ul {
-    margin: 0; padding: 0;
+  >ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
-    // experimental column support
     -moz-column-gap: 20px;
     -moz-column-fill: auto;
     -webkit-column-count: 3;
@@ -141,34 +159,31 @@ body{
       -webkit-column-count: 2;
       column-count: 2;
     }
+
     @media (max-width: 895px) {
       -webkit-column-count: 1;
       column-count: 1;
     }
 
-    // Style individual category cards
-    > li {
+    >li {
       background-color: $navy_bg;
       border-radius: 10px;
       padding: 6px 10px;
       margin: 0 0 20px 0;
       text-transform: capitalize;
       font-size: 24px;
-      //  experimental column support
       -moz-column-break-inside: avoid;
       -webkit-column-break-inside: avoid;
       column-break-inside: avoid;
       color: $green;
 
-      // Style the sub-list of gifs
-      > ul {
+      >ul {
         padding: 5px 0 0;
         list-style: none;
         overflow: hidden;
         text-overflow: ellipsis;
 
-        // Style individual gif listing items
-        > li {
+        >li {
           text-overflow: ellipsis;
           width: 100%;
           overflow: hidden;
@@ -179,7 +194,6 @@ body{
           padding: 0;
           margin: 0 0 5px 0;
 
-          // Style individual gif links
           a {
             color: $blue_text_lht;
             text-decoration: none;
@@ -199,4 +213,5 @@ body{
     }
   }
 }
+
 //  @end main styles

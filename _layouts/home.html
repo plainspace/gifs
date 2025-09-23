@@ -7,11 +7,20 @@
 
   <header class="page-header">
     <div class="img-preview">
-      <img src="excited/aha.gif" alt="" class="banner-img">
-      <img src="" id="preview" class="gif-preview">
+      <div class="gif-wrapper">
+        <img id="preview" class="gif-preview" src="" alt="Preview">
+        <button class="copy-btn">Copy URL</button>
+      </div>
     </div>
+
     <div>{{ content }}</div>
   </header>
+
+  <!-- <ul id="gif-list">
+    <li><a href="excited/aha.gif" onmouseover="setPreview(this)">aha.gif</a></li>
+    <li><a href="shoresy/feels-amazing-vulnerable.gif" onmouseover="setPreview(this)">feels-amazing-vulnerable.gif</a>
+    </li>
+  </ul> -->
 
   <div class="gif-listing">
     {% include site-index.html %}
@@ -28,6 +37,23 @@
     for (var i = 0; i < links.length; i++) {
       links[i].addEventListener("mouseover", hoverListener);
     }
+  </script>
+
+  <script>
+    function copyGifUrl(button) {
+      const wrapper = button.closest('.gif-wrapper');
+      const img = wrapper.querySelector('img');
+      if (!img) return;
+
+      navigator.clipboard.writeText(img.src).then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => (button.textContent = 'Copy URL'), 1500);
+      });
+    }
+
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', () => copyGifUrl(btn));
+    });
   </script>
 
 </body>
