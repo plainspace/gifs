@@ -1,0 +1,4 @@
+# Always track .gif files as binary and include in all clones
+*.gif binary
+*.gif -text
+*.gif export-ignore !export-ignore
