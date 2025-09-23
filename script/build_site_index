@@ -11,9 +11,8 @@ INCLUDE_EXTENSIONS = ['.gif']
 IMPORTANT_DIRS = ['shoresy', 'all the favs', 'goldblum']
 
 # --- COLLECT FILES ---
-
 def collect_files
-  Dir.glob("**/*")
+  Dir.glob("*/*") # only include files in top-level folders
     .select { |f| File.file?(f) && INCLUDE_EXTENSIONS.include?(File.extname(f)) }
     .map do |f|
       {
@@ -34,8 +33,9 @@ end
 
 # --- SORT FILES ---
 files.sort_by! do |file|
-  importance = file['important'] ? IMPORTANT_DIRS.index(file['path'].split('/').first) : IMPORTANT_DIRS.length
-  [importance, file['path']]
+  top_dir = file['path'].split('/').first
+  importance = file['important'] ? IMPORTANT_DIRS.index(top_dir) : IMPORTANT_DIRS.length
+  [importance, top_dir.downcase, file['path'].downcase]
 end
 
 # --- WRITE YAML ---
@@ -49,7 +49,6 @@ FileUtils.mkdir_p(File.dirname(OUTPUT_HTML))
 File.open(OUTPUT_HTML, 'w') do |f|
   f.puts "<ul>"
 
-  # Order folders: important ones first in specified order, then the rest sorted alphabetically
   grouped = files.group_by { |item| item['path'].split('/').first }
   ordered_folders = IMPORTANT_DIRS + (grouped.keys - IMPORTANT_DIRS).sort
 

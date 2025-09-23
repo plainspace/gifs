@@ -1,29 +1,29 @@
 ---
-- path: shoresy/feels amazing vulnerable.gif
+- path: shoresy/feels-amazing-vulnerable.gif
   modified_time: 1758632940
   extname: ".gif"
   important: true
-- path: shoresy/feels amazing.gif
+- path: shoresy/feels-amazing.gif
   modified_time: 1758632940
   extname: ".gif"
   important: true
-- path: shoresy/hell yeah.gif
+- path: shoresy/hell-yeah.gif
   modified_time: 1758632940
   extname: ".gif"
   important: true
-- path: shoresy/honor you.gif
+- path: shoresy/honor-you.gif
   modified_time: 1758632940
   extname: ".gif"
   important: true
-- path: shoresy/i swear so good.gif
+- path: shoresy/i-swear-so-good.gif
   modified_time: 1758632940
   extname: ".gif"
   important: true
-- path: shoresy/set the tone.gif
+- path: shoresy/set-the-tone.gif
   modified_time: 1758632940
   extname: ".gif"
   important: true
-- path: shoresy/settle down.gif
+- path: shoresy/settle-down.gif
   modified_time: 1758632940
   extname: ".gif"
   important: true
@@ -39,22 +39,6 @@
   modified_time: 1758633594
   extname: ".gif"
   important: true
-- path: all the favs/Marty-McFly-Confused-In-Back-To-The-Future-Gif.gif
-  modified_time: 1758632938
-  extname: ".gif"
-  important: true
-- path: all the favs/Royal-Tenenbaums-Bill-Murray.gif
-  modified_time: 1758632938
-  extname: ".gif"
-  important: true
-- path: all the favs/Royal-Tenenbaums-endless-stare.gif
-  modified_time: 1758632938
-  extname: ".gif"
-  important: true
-- path: all the favs/This-Is-Why-We-Cant-Have-Nice-Things-Gif.gif
-  modified_time: 1758632938
-  extname: ".gif"
-  important: true
 - path: all the favs/ameleie.gif
   modified_time: 1758632938
   extname: ".gif"
@@ -63,7 +47,7 @@
   modified_time: 1758632938
   extname: ".gif"
   important: true
-- path: all the favs/bad feeling.gif
+- path: all the favs/bad-feeling.gif
   modified_time: 1758632938
   extname: ".gif"
   important: true
@@ -91,6 +75,10 @@
   modified_time: 1758632938
   extname: ".gif"
   important: true
+- path: all the favs/cups.gif
+  modified_time: 1758632939
+  extname: ".gif"
+  important: true
 - path: all the favs/dont.gif
   modified_time: 1758632938
   extname: ".gif"
@@ -99,11 +87,11 @@
   modified_time: 1758632938
   extname: ".gif"
   important: true
-- path: all the favs/i can't take anymore.gif
+- path: all the favs/i-can't-take-anymore.gif
   modified_time: 1758632940
   extname: ".gif"
   important: true
-- path: all the favs/i made this.gif
+- path: all the favs/i-made-this.gif
   modified_time: 1758632938
   extname: ".gif"
   important: true
@@ -113,6 +101,10 @@
   important: true
 - path: all the favs/jayz.gif
   modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: all the favs/marty-mcfly-confused-in-back-to-the-future-gif.gif
+  modified_time: 1758632938
   extname: ".gif"
   important: true
 - path: all the favs/money.gif
@@ -127,7 +119,7 @@
   modified_time: 1758632938
   extname: ".gif"
   important: true
-- path: all the favs/peewee snakes.gif
+- path: all the favs/peewee-snakes.gif
   modified_time: 1758632940
   extname: ".gif"
   important: true
@@ -143,11 +135,19 @@
   modified_time: 1758632938
   extname: ".gif"
   important: true
+- path: all the favs/royal-tenenbaums-bill-murray.gif
+  modified_time: 1758632938
+  extname: ".gif"
+  important: true
+- path: all the favs/royal-tenenbaums-endless-stare.gif
+  modified_time: 1758632938
+  extname: ".gif"
+  important: true
 - path: all the favs/shinging.gif
   modified_time: 1758632938
   extname: ".gif"
   important: true
-- path: all the favs/shopping basket.gif
+- path: all the favs/shopping-basket.gif
   modified_time: 1758632938
   extname: ".gif"
   important: true
@@ -159,59 +159,59 @@
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: all the favs/swedish chef.gif
+- path: all the favs/swedish-chef.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: all the favs/tumblr_molutvB3Df1ql82o1o1_250.gif
-  modified_time: 1758632939
+- path: all the favs/this-is-why-we-cant-have-nice-things-gif.gif
+  modified_time: 1758632938
   extname: ".gif"
   important: true
 - path: all the favs/window.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum clap.gif
+- path: goldblum/goldblum-clap.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum dance.gif
+- path: goldblum/goldblum-dance.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum dunno.gif
+- path: goldblum/goldblum-dunno.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum excited.gif
+- path: goldblum/goldblum-excited.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum love.gif
+- path: goldblum/goldblum-love.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum mindblown.gif
+- path: goldblum/goldblum-mindblown.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum ok.gif
+- path: goldblum/goldblum-ok.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum thumbs down.gif
+- path: goldblum/goldblum-thumbs-down.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum thumbs up.gif
+- path: goldblum/goldblum-thumbs-up.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum wink.gif
+- path: goldblum/goldblum-wink.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
-- path: goldblum/goldblum yawn.gif
+- path: goldblum/goldblum-yawn.gif
   modified_time: 1758632939
   extname: ".gif"
   important: true
@@ -247,19 +247,19 @@
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: be-better-tomorrow-HD/Large GIF (498x276).gif
+- path: be-better-tomorrow-HD/large-gif-(498x276).gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: be-better-tomorrow-HD/Small GIF (400x222).gif
+- path: be-better-tomorrow-HD/small-gif-(400x222).gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: be-better-tomorrow-SD/Large GIF (498x276).gif
+- path: be-better-tomorrow-SD/large-gif-(498x276).gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: be-better-tomorrow-SD/Small GIF (400x222).gif
+- path: be-better-tomorrow-SD/small-gif-(400x222).gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -359,7 +359,7 @@
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: cinemagraphs/the storm.gif
+- path: cinemagraphs/the-storm.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -415,11 +415,11 @@
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: contempt/Dwight-Schrute-look-of-disapproval.gif
+- path: contempt/cheech-wtf.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: contempt/cheech-wtf.gif
+- path: contempt/dwight-schrute-look-of-disapproval.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -447,7 +447,7 @@
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: contempt/no_way_Neil_deGrasse_Tyson.gif
+- path: contempt/no_way_neil_degrasse_tyson.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -491,15 +491,15 @@
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: dancing/Blues-Brothers.gif
-  modified_time: 1758632939
-  extname: ".gif"
-  important: false
 - path: dancing/ace-ventura-dance.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
 - path: dancing/bboy-bear.gif
+  modified_time: 1758632939
+  extname: ".gif"
+  important: false
+- path: dancing/blues-brothers.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -519,7 +519,7 @@
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: dancing/dancing lady.gif
+- path: dancing/dancing-lady.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -695,11 +695,7 @@
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: excited/42-Snoop-Bounce.gif
-  modified_time: 1758632939
-  extname: ".gif"
-  important: false
-- path: excited/Sean-Connery-Fist-Pump-US-Open.gif
+- path: excited/42-snoop-bounce.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -780,6 +776,10 @@
   extname: ".gif"
   important: false
 - path: excited/new-world-order.gif
+  modified_time: 1758632939
+  extname: ".gif"
+  important: false
+- path: excited/sean-connery-fist-pump-us-open.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -939,11 +939,11 @@
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: gangsta/1-50-Cent-Laugh-Off.gif
+- path: gangsta/1-50-cent-laugh-off.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
-- path: gangsta/42-Snoop-Bounce.gif
+- path: gangsta/42-snoop-bounce.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -1191,7 +1191,7 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: miazaki/kiki bread.gif
+- path: miazaki/kiki-bread.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
@@ -1267,10 +1267,6 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: mind-blown/Mind-Blown-Russell-Brand.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
 - path: mind-blown/cinderella-head-explode.gif
   modified_time: 1758632940
   extname: ".gif"
@@ -1292,6 +1288,10 @@
   extname: ".gif"
   important: false
 - path: mind-blown/mind-blown-kramer.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: false
+- path: mind-blown/mind-blown-russell-brand.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
@@ -1331,7 +1331,7 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: no/no_way_Neil_deGrasse_Tyson.gif
+- path: no/no_way_neil_degrasse_tyson.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
@@ -1351,15 +1351,15 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: omg/Kramer-whaaa.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
 - path: omg/austin-powers-omg.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
 - path: omg/fresh-prince-omg.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: false
+- path: omg/kramer-whaaa.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
@@ -1395,7 +1395,7 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: scared/3FlzE.gif
+- path: scared/3flze.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
@@ -1439,7 +1439,7 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: thank-you/HeyThanks.gif
+- path: thank-you/heythanks.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
@@ -1447,7 +1447,7 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/bravo chef.gif
+- path: the bear/bravo-chef.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
@@ -1455,55 +1455,55 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/feels like armor.gif
+- path: the bear/feels-like-armor.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/i got it thank you.gif
+- path: the bear/i-got-it-thank-you.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/i like you so much.gif
+- path: the bear/i-like-you-so-much.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/i love you but I dont have time.gif
+- path: the bear/i-love-you-but-i-dont-have-time.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/i need you to respect yourself.gif
+- path: the bear/i-need-you-to-respect-yourself.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/ill do it.gif
+- path: the bear/ill-do-it.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/she is the best.gif
+- path: the bear/she-is-the-best.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/thatll do.gif
+- path: the bear/thatll-do.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/thats helpful.gif
+- path: the bear/thats-helpful.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/this really was almost perfect.gif
+- path: the bear/this-really-was-almost-perfect.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/we read the room.gif
+- path: the bear/we-read-the-room.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/working together cph.gif
+- path: the bear/working-together-cph.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: the bear/yes chef.gif
+- path: the bear/yes-chef.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
@@ -1555,14 +1555,6 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
-- path: upset/DataBSOD.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: upset/Kramer-whaaa.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
 - path: upset/alen-rickman.gif
   modified_time: 1758632940
   extname: ".gif"
@@ -1579,7 +1571,15 @@
   modified_time: 1758632940
   extname: ".gif"
   important: false
+- path: upset/databsod.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: false
 - path: upset/jumps-out-window2.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: false
+- path: upset/kramer-whaaa.gif
   modified_time: 1758632940
   extname: ".gif"
   important: false
