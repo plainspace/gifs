@@ -1,62 +1,61 @@
-#! /usr/bin/env ruby
+#!/usr/bin/env ruby
 
 require 'builder'
 require 'fileutils'
 require 'yaml'
 
-def dir_blacklist
-  ["css", "sass", "script"]
-end
+# --- CONFIG ---
 
-def useless?(f)
-  f.start_with?("_") ||
-    f.start_with?(".") ||
-    !File.directory?(f) ||
-    dir_blacklist.include?(f)
-end
+output_file = '_data/static_files.yml'
 
-def get_gif_dirs
-  Dir.foreach(".").map { |f| f unless useless?(f) }.compact
-end
+important_dirs = [
+  'goldblum',
+  'shoresy',
+  'all the favs'
+]
 
-def liquid_info_for_file(dir, filename)
-  path = File.join(filename)
-  {
-    "path"          => path,
-    "modified_time" => File.mtime(path).to_i,
-    "extname"       => File.extname(path)
-  }
-end
+# All folders you want to index (important or not)
+included_dirs = Dir.glob("*").select { |d| File.directory?(d) && !d.start_with?("_") && d != "script" }
 
-list = Builder::XmlMarkup.new(
-  target: File.open("_includes/site-index.html", 'w'),
-  indent: 0,
-  margin: 0
-)
+# --- BUILD INDEX ---
 
-dirs  = get_gif_dirs
-files = []
+items = []
 
-list.ul do |builder|
-  dirs.each do |dir|
-    builder.li do |dir_element|
-      dir_element.text!(dir)
-      dir_element.ul do |ul|
-        Dir.glob("#{dir}/**/*.gif") do |gif|
-          files << liquid_info_for_file(dir, gif)
-          ul.li do |li|
-            li.a(
-              File.basename(gif),
-              "href"  => gif,
-              "title" => gif,
-              "class" => "gif"
-            )
-          end
-        end
-      end
-    end
+included_dirs.each do |dir|
+  Dir.glob("#{dir}/**/*").each do |path|
+    next unless File.file?(path)
+
+    extname = File.extname(path)
+    modified_time = File.mtime(path).to_i
+
+    item = {
+      'path' => path,
+      'modified_time' => modified_time,
+      'extname' => extname
+    }
+
+    important_index = important_dirs.find_index { |important| path.start_with?("#{important}/") }
+    item['important_index'] = important_index if important_index
+
+    items << item
   end
 end
 
-FileUtils.mkdir_p("_data") unless File.directory?("_data")
-File.open("_data/static_files.yml", 'w') { |f| f.write(YAML.dump(files)) }
+# --- SORTING ---
+
+items.sort_by! do |item|
+  if item.key?('important_index')
+    [0, item['important_index'], item['path']]
+  else
+    [1, item['path']]
+  end
+end
+
+items.each { |item| item.delete('important_index') }
+
+# --- WRITE YAML OUTPUT ---
+
+FileUtils.mkdir_p(File.dirname(output_file))
+File.open(output_file, 'w') { |f| f.write(items.to_yaml) }
+
+puts "Wrote #{items.size} items to #{output_file}"
