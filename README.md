@@ -60,6 +60,14 @@ To run this site locally, you’ll need:
 
 ---
 
+### Update the list
+
+```
+script/build_site_index
+```
+
+---
+
 ### 🧩 Troubleshooting
 
 - If you see errors about native extensions (like `json` gem), make sure your Ruby version is compatible. Some older gems don’t work on the newest Ruby versions (e.g., 3.4.2).
