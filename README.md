@@ -45,13 +45,15 @@ To run this site locally, you’ll need:
 3. **Start the development server**:
 
    ```bash
-   bundle exec jekyll serve
+   ./script/serve
    ```
+
+   The script starts at port 4000, jumps to 4004 if 4000 is taken, then bumps to the next open port if needed. Extra flags are passed through to `jekyll serve`.
 
 4. Open your browser to:
 
    ```
-   http://localhost:4000
+   http://localhost:4000 (or the next available port)
    ```
 
    The site will auto-reload as you make changes.

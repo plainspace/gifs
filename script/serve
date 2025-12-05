@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require 'socket'
+
+START_PORT = Integer(ENV.fetch('PORT', 4000))
+MAX_ATTEMPTS = 50
+
+def find_available_port(start_port)
+  candidates = [start_port]
+  candidates << 4004 if start_port == 4000
+  candidates += ((candidates.last + 1)..(candidates.last + MAX_ATTEMPTS)).to_a
+
+  unique_candidates = candidates.uniq
+
+  unique_candidates.each do |port|
+    begin
+      server = TCPServer.new('127.0.0.1', port)
+      server.close
+      return port
+    rescue Errno::EADDRINUSE, Errno::EACCES
+      next
+    end
+  end
+
+  abort("No open port found starting at #{start_port} (including 4004) after #{unique_candidates.length} attempts.")
+end
+
+port = find_available_port(START_PORT)
+puts "Starting Jekyll on port #{port}..."
+
+exec(
+  { 'PORT' => port.to_s },
+  'bundle', 'exec', 'jekyll', 'serve',
+  '--port', port.to_s,
+  *ARGV
+)
