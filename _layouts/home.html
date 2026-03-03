@@ -61,6 +61,12 @@
     var preview = document.getElementById("preview");
     var links = document.getElementsByClassName("gif");
     var toast = document.getElementById("toast");
+    var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+
+    // Hide management UI in production
+    if (!isLocal) {
+      document.querySelector('.search-panel').style.display = 'none';
+    }
 
     // --- Toast ---
     function showToast(msg, duration) {
@@ -91,34 +97,36 @@
       links[i].addEventListener("mouseover", hoverListener);
       links[i].addEventListener("click", clickListener);
 
-      // Add delete button
-      var delBtn = document.createElement('button');
-      delBtn.className = 'delete-btn';
-      delBtn.innerHTML = '&times;';
-      delBtn.title = 'Delete';
-      delBtn.dataset.path = links[i].getAttribute('href');
-      delBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        var path = this.dataset.path;
-        var li = this.parentElement;
-        if (!confirm('Delete ' + path + '?')) return;
-        fetch('http://localhost:4005/delete-gif', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ path: path })
-        })
-          .then(function(r) { return r.json(); })
-          .then(function(data) {
-            if (data.ok) {
-              li.remove();
-              showToast('Deleted');
-            } else {
-              showToast(data.error || 'Delete failed', 3000);
-            }
+      // Add delete button (local only)
+      if (isLocal) {
+        var delBtn = document.createElement('button');
+        delBtn.className = 'delete-btn';
+        delBtn.innerHTML = '&times;';
+        delBtn.title = 'Delete';
+        delBtn.dataset.path = links[i].getAttribute('href');
+        delBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var path = this.dataset.path;
+          var li = this.parentElement;
+          if (!confirm('Delete ' + path + '?')) return;
+          fetch('http://localhost:4005/delete-gif', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ path: path })
           })
-          .catch(function() { showToast('Delete failed — is save_server running?', 3000); });
-      });
-      links[i].parentElement.appendChild(delBtn);
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+              if (data.ok) {
+                li.remove();
+                showToast('Deleted');
+              } else {
+                showToast(data.error || 'Delete failed', 3000);
+              }
+            })
+            .catch(function() { showToast('Delete failed — is save_server running?', 3000); });
+        });
+        links[i].parentElement.appendChild(delBtn);
+      }
     }
 
     // --- Random GIF on load ---
@@ -161,22 +169,24 @@
       nameSpan.className = 'category-name';
       nameSpan.textContent = categoryName;
 
-      var pinBtn = document.createElement('button');
-      pinBtn.className = 'pin-btn';
-      pinBtn.title = pinnedCollections.includes(categoryName) ? 'Unpin' : 'Pin to top';
-      pinBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>';
-
       header.appendChild(nameSpan);
-      header.appendChild(pinBtn);
+
+      if (isLocal) {
+        var pinBtn = document.createElement('button');
+        pinBtn.className = 'pin-btn';
+        pinBtn.title = pinnedCollections.includes(categoryName) ? 'Unpin' : 'Pin to top';
+        pinBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>';
+        header.appendChild(pinBtn);
+        pinBtn.addEventListener('click', function() {
+          togglePin(categoryName, li);
+        });
+      }
+
       li.replaceChild(header, textNode);
 
       if (pinnedCollections.includes(categoryName)) {
         li.classList.add('pinned');
       }
-
-      pinBtn.addEventListener('click', function() {
-        togglePin(categoryName, li);
-      });
     });
 
     function togglePin(name, li) {
