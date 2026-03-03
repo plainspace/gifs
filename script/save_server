@@ -1,0 +1,138 @@
+#!/usr/bin/env ruby
+
+# Tiny server that saves pin data and GIFs to the repo.
+# Run alongside `script/serve` when you want changes to persist.
+
+require 'webrick'
+require 'json'
+require 'open-uri'
+require 'fileutils'
+
+ROOT = File.expand_path('..', __dir__)
+PINS_FILE = File.join(ROOT, '_data', 'pins.json')
+BUILD_SCRIPT = File.join(ROOT, 'script', 'build_site_index')
+PORT = Integer(ENV.fetch('SAVE_PORT', 4005))
+
+# Custom servlet base that handles CORS properly
+class CORSServlet < WEBrick::HTTPServlet::AbstractServlet
+  def do_OPTIONS(req, res)
+    set_cors(res)
+    res.status = 204
+  end
+
+  private
+
+  def set_cors(res)
+    res['Access-Control-Allow-Origin'] = '*'
+    res['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+    res['Access-Control-Allow-Headers'] = 'Content-Type'
+  end
+end
+
+class SavePinsServlet < CORSServlet
+  def do_POST(req, res)
+    set_cors(res)
+    pins = JSON.parse(req.body)
+    File.write(PINS_FILE, JSON.pretty_generate(pins) + "\n")
+    res.status = 200
+    res.body = '{"ok":true}'
+    res['Content-Type'] = 'application/json'
+    puts "Saved #{pins.length} pins to #{PINS_FILE}"
+  rescue => e
+    set_cors(res)
+    res.status = 400
+    res.body = "{\"error\":\"#{e.message}\"}"
+    res['Content-Type'] = 'application/json'
+  end
+end
+
+class SaveGifServlet < CORSServlet
+  def do_POST(req, res)
+    set_cors(res)
+    data = JSON.parse(req.body)
+    url = data['url']
+    category = data['category']
+    filename = data['filename']
+
+    raise 'Missing url, category, or filename' unless url && category && filename
+
+    safe_category = category.gsub(/[\/\\]/, '-')
+    safe_filename = filename.gsub(/[\/\\]/, '-')
+
+    dest_dir = File.join(ROOT, safe_category)
+    FileUtils.mkdir_p(dest_dir)
+    dest_path = File.join(dest_dir, safe_filename)
+
+    puts "Downloading #{url} -> #{dest_path}"
+    URI.open(url) do |remote|
+      File.open(dest_path, 'wb') { |f| f.write(remote.read) }
+    end
+
+    puts "Rebuilding site index..."
+    Dir.chdir(ROOT) { system(BUILD_SCRIPT) }
+
+    res.status = 200
+    res.body = JSON.generate({ ok: true, path: "#{safe_category}/#{safe_filename}" })
+    res['Content-Type'] = 'application/json'
+    puts "Saved GIF to #{dest_path}"
+  rescue => e
+    set_cors(res)
+    res.status = 400
+    res.body = "{\"error\":\"#{e.message}\"}"
+    res['Content-Type'] = 'application/json'
+    $stderr.puts "Error saving GIF: #{e.message}"
+  end
+end
+
+class DeleteGifServlet < CORSServlet
+  def do_POST(req, res)
+    set_cors(res)
+    data = JSON.parse(req.body)
+    path = data['path']
+
+    raise 'Missing path' unless path
+
+    # Prevent directory traversal
+    safe_path = File.expand_path(path, ROOT)
+    raise 'Invalid path' unless safe_path.start_with?(ROOT + '/')
+
+    if File.exist?(safe_path)
+      File.delete(safe_path)
+      puts "Deleted #{safe_path}"
+
+      # Remove empty category folder
+      dir = File.dirname(safe_path)
+      if Dir.exist?(dir) && (Dir.entries(dir) - %w[. ..]).empty?
+        Dir.rmdir(dir)
+        puts "Removed empty folder #{dir}"
+      end
+
+      Dir.chdir(ROOT) { system(BUILD_SCRIPT) }
+
+      res.status = 200
+      res.body = '{"ok":true}'
+    else
+      res.status = 404
+      res.body = '{"error":"File not found"}'
+    end
+    res['Content-Type'] = 'application/json'
+  rescue => e
+    set_cors(res)
+    res.status = 400
+    res.body = "{\"error\":\"#{e.message}\"}"
+    res['Content-Type'] = 'application/json'
+    $stderr.puts "Error deleting GIF: #{e.message}"
+  end
+end
+
+server = WEBrick::HTTPServer.new(Port: PORT, Logger: WEBrick::Log.new($stderr, WEBrick::Log::WARN))
+server.mount '/save-pins', SavePinsServlet
+server.mount '/save-gif', SaveGifServlet
+server.mount '/delete-gif', DeleteGifServlet
+
+trap('INT') { server.shutdown }
+
+puts "Save server running on http://localhost:#{PORT}"
+puts "  POST /save-pins  -> #{PINS_FILE}"
+puts "  POST /save-gif   -> downloads GIF to category folder + rebuilds index"
+server.start

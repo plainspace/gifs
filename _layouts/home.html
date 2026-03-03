@@ -13,47 +13,406 @@
       </div>
     </div>
 
-    <div>{{ content }}</div>
+    <div class="sidebar-content">{{ content }}</div>
+
+    <div class="search-panel">
+      <input type="text" id="gif-search" placeholder="Search Giphy...">
+      <button id="search-btn">Search</button>
+    </div>
   </header>
 
-  <!-- <ul id="gif-list">
-    <li><a href="excited/aha.gif" onmouseover="setPreview(this)">aha.gif</a></li>
-    <li><a href="shoresy/feels-amazing-vulnerable.gif" onmouseover="setPreview(this)">feels-amazing-vulnerable.gif</a>
-    </li>
-  </ul> -->
+  <div id="pinned-section" class="pinned-section" style="display:none"></div>
 
   <div class="gif-listing">
     {% include site-index.html %}
   </div>
 
-  <script type="text/javascript">
-    var preview = document.getElementById("preview");
+  <!-- Search Results Overlay -->
+  <div id="search-overlay" class="search-overlay hidden">
+    <div class="search-overlay-header">
+      <span id="search-query-label"></span>
+      <button id="close-search">&times;</button>
+    </div>
+    <div id="results-grid" class="results-grid"></div>
+  </div>
 
-    function hoverListener(evt) {
-      preview.src = evt.target.href;
-    };
+  <!-- Save to Collection Modal -->
+  <div id="save-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <h3>Add to Collection</h3>
+      <img id="modal-gif" src="" alt="GIF to save">
+      <label for="gif-filename">Filename</label>
+      <input type="text" id="gif-filename" placeholder="my-cool-gif.gif">
+      <label for="category-select">Category</label>
+      <select id="category-select"></select>
+      <input type="text" id="new-category" placeholder="Or type a new category...">
+      <div class="modal-actions">
+        <button id="save-gif-btn" class="btn-save">Save to Collection</button>
+        <button id="cancel-btn" class="btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
 
-    var links = document.getElementsByClassName("gif");
-    for (var i = 0; i < links.length; i++) {
-      links[i].addEventListener("mouseover", hoverListener);
-    }
-  </script>
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
 
   <script>
-    function copyGifUrl(button) {
-      const wrapper = button.closest('.gif-wrapper');
-      const img = wrapper.querySelector('img');
-      if (!img) return;
+  (function() {
+    var preview = document.getElementById("preview");
+    var links = document.getElementsByClassName("gif");
+    var toast = document.getElementById("toast");
 
-      navigator.clipboard.writeText(img.src).then(() => {
-        button.textContent = 'Copied!';
-        setTimeout(() => (button.textContent = 'Copy URL'), 1500);
+    // --- Toast ---
+    function showToast(msg, duration) {
+      toast.textContent = msg;
+      toast.classList.remove("hidden");
+      clearTimeout(toast._timeout);
+      toast._timeout = setTimeout(function() {
+        toast.classList.add("hidden");
+      }, duration || 2000);
+    }
+
+    // --- Hover preview ---
+    function hoverListener(evt) {
+      preview.src = evt.target.href;
+    }
+
+    // --- Click-to-copy (prevents navigation) ---
+    function clickListener(evt) {
+      evt.preventDefault();
+      var url = new URL(evt.target.href, window.location.origin).href;
+      preview.src = evt.target.href;
+      navigator.clipboard.writeText(url).then(function() {
+        showToast("Copied!");
       });
     }
 
-    document.querySelectorAll('.copy-btn').forEach((btn) => {
-      btn.addEventListener('click', () => copyGifUrl(btn));
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener("mouseover", hoverListener);
+      links[i].addEventListener("click", clickListener);
+
+      // Add delete button
+      var delBtn = document.createElement('button');
+      delBtn.className = 'delete-btn';
+      delBtn.innerHTML = '&times;';
+      delBtn.title = 'Delete';
+      delBtn.dataset.path = links[i].getAttribute('href');
+      delBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var path = this.dataset.path;
+        var li = this.parentElement;
+        if (!confirm('Delete ' + path + '?')) return;
+        fetch('http://localhost:4005/delete-gif', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ path: path })
+        })
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            if (data.ok) {
+              li.remove();
+              showToast('Deleted');
+            } else {
+              showToast(data.error || 'Delete failed', 3000);
+            }
+          })
+          .catch(function() { showToast('Delete failed — is save_server running?', 3000); });
+      });
+      links[i].parentElement.appendChild(delBtn);
+    }
+
+    // --- Random GIF on load ---
+    if (links.length > 0) {
+      var randomLink = links[Math.floor(Math.random() * links.length)];
+      preview.src = randomLink.href;
+    }
+
+    // --- Copy button in preview ---
+    document.querySelectorAll('.copy-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (!preview.src) return;
+        navigator.clipboard.writeText(preview.src).then(function() {
+          btn.textContent = 'Copied!';
+          setTimeout(function() { btn.textContent = 'Copy URL'; }, 1500);
+        });
+      });
     });
+
+    // --- Pin collections ---
+    // Pins come from _data/pins.json (baked at build time).
+    // localStorage acts as an override between rebuilds.
+    var buildPins = {{ site.data.pins | jsonify | default: "[]" }};
+    var localPins = JSON.parse(localStorage.getItem('pinnedCollections') || 'null');
+    var pinnedCollections = localPins !== null ? localPins : buildPins;
+    var gifListing = document.querySelector('.gif-listing > ul');
+    var pinnedSection = document.getElementById('pinned-section');
+    var categoryItems = Array.from(gifListing.querySelectorAll(':scope > li'));
+
+    // Build category headers with pin buttons
+    categoryItems.forEach(function(li) {
+      var textNode = li.childNodes[0];
+      var categoryName = textNode.textContent.trim();
+      li.dataset.category = categoryName;
+
+      var header = document.createElement('div');
+      header.className = 'category-header';
+
+      var nameSpan = document.createElement('span');
+      nameSpan.className = 'category-name';
+      nameSpan.textContent = categoryName;
+
+      var pinBtn = document.createElement('button');
+      pinBtn.className = 'pin-btn';
+      pinBtn.title = pinnedCollections.includes(categoryName) ? 'Unpin' : 'Pin to top';
+      pinBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>';
+
+      header.appendChild(nameSpan);
+      header.appendChild(pinBtn);
+      li.replaceChild(header, textNode);
+
+      if (pinnedCollections.includes(categoryName)) {
+        li.classList.add('pinned');
+      }
+
+      pinBtn.addEventListener('click', function() {
+        togglePin(categoryName, li);
+      });
+    });
+
+    function togglePin(name, li) {
+      var idx = pinnedCollections.indexOf(name);
+      if (idx > -1) {
+        pinnedCollections.splice(idx, 1);
+        li.classList.remove('pinned');
+        li.querySelector('.pin-btn').title = 'Pin to top';
+      } else {
+        pinnedCollections.push(name);
+        li.classList.add('pinned');
+        li.querySelector('.pin-btn').title = 'Unpin';
+      }
+      savePins();
+      layoutCategories();
+    }
+
+    function layoutCategories() {
+      // Create or reuse pinned <ul>
+      var pinnedUl = pinnedSection.querySelector('ul');
+      if (!pinnedUl) {
+        pinnedUl = document.createElement('ul');
+        pinnedSection.appendChild(pinnedUl);
+      }
+
+      // Move items into the right container
+      categoryItems.forEach(function(li) {
+        var isPinned = pinnedCollections.includes(li.dataset.category);
+        if (isPinned) {
+          pinnedUl.appendChild(li);
+        } else {
+          gifListing.appendChild(li);
+        }
+      });
+
+      // Sort pinned items by pin order
+      pinnedCollections.forEach(function(name) {
+        var li = pinnedUl.querySelector('[data-category="' + name + '"]');
+        if (li) pinnedUl.appendChild(li);
+      });
+
+      // Show/hide pinned section
+      pinnedSection.style.display = pinnedUl.children.length > 0 ? '' : 'none';
+    }
+
+    layoutCategories();
+
+    // Save pins to _data/pins.json (only works locally via a small save endpoint)
+    function savePins() {
+      // Write to localStorage as a fallback
+      localStorage.setItem('pinnedCollections', JSON.stringify(pinnedCollections));
+      // Attempt to save to file (works when save server is running)
+      fetch('http://localhost:4005/save-pins', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(pinnedCollections)
+      }).catch(function() {
+        // Save server not running — pins still work via build data, just won't persist new changes until rebuild
+      });
+    }
+
+    // --- Giphy Search ---
+    var GIPHY_API_KEY = '{{ site.giphy_api_key | default: "" }}';
+    var searchInput = document.getElementById('gif-search');
+    var searchBtn = document.getElementById('search-btn');
+    var searchOverlay = document.getElementById('search-overlay');
+    var resultsGrid = document.getElementById('results-grid');
+    var queryLabel = document.getElementById('search-query-label');
+    var closeSearchBtn = document.getElementById('close-search');
+
+    searchBtn.addEventListener('click', searchGifs);
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') searchGifs();
+    });
+    closeSearchBtn.addEventListener('click', closeSearch);
+
+    function searchGifs() {
+      var query = searchInput.value.trim();
+      if (!query) return;
+      if (!GIPHY_API_KEY) {
+        showToast('Add giphy_api_key to _config.yml', 3000);
+        return;
+      }
+      queryLabel.textContent = 'Results for \u201c' + query + '\u201d';
+      resultsGrid.innerHTML = '<div class="loading">Searching...</div>';
+      searchOverlay.classList.remove('hidden');
+
+      fetch('https://api.giphy.com/v1/gifs/search?api_key=' + GIPHY_API_KEY + '&q=' + encodeURIComponent(query) + '&limit=24&rating=g')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          resultsGrid.innerHTML = '';
+          if (!data.data || data.data.length === 0) {
+            resultsGrid.innerHTML = '<div class="no-results">No GIFs found</div>';
+            return;
+          }
+          data.data.forEach(function(gif) {
+            var item = document.createElement('div');
+            item.className = 'result-item';
+
+            var img = document.createElement('img');
+            img.src = gif.images.fixed_height_small.url;
+            img.alt = gif.title || '';
+            item.appendChild(img);
+
+            var addBtn = document.createElement('button');
+            addBtn.className = 'add-btn';
+            addBtn.textContent = '+ Add';
+            item.appendChild(addBtn);
+
+            img.addEventListener('mouseover', function() {
+              preview.src = gif.images.fixed_height.url;
+            });
+
+            addBtn.addEventListener('click', function() {
+              openSaveModal(gif);
+            });
+
+            resultsGrid.appendChild(item);
+          });
+        })
+        .catch(function() {
+          resultsGrid.innerHTML = '<div class="no-results">Search failed. Check your API key.</div>';
+        });
+    }
+
+    function closeSearch() {
+      searchOverlay.classList.add('hidden');
+    }
+
+    // --- Save to Collection Modal ---
+    var saveModal = document.getElementById('save-modal');
+    var modalGif = document.getElementById('modal-gif');
+    var categorySelect = document.getElementById('category-select');
+    var newCategoryInput = document.getElementById('new-category');
+    var gifFilename = document.getElementById('gif-filename');
+    var saveGifBtn = document.getElementById('save-gif-btn');
+    var cancelBtn = document.getElementById('cancel-btn');
+    var currentGifToSave = null;
+
+    function getCategories() {
+      var cats = [];
+      categoryItems.forEach(function(li) {
+        cats.push(li.dataset.category);
+      });
+      return cats.sort();
+    }
+
+    function openSaveModal(gif) {
+      currentGifToSave = gif;
+      modalGif.src = gif.images.fixed_height.url;
+
+      categorySelect.innerHTML = '';
+      getCategories().forEach(function(cat) {
+        var opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = cat;
+        categorySelect.appendChild(opt);
+      });
+
+      var slug = gif.slug || gif.title || 'gif';
+      gifFilename.value = slug.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') + '.gif';
+      newCategoryInput.value = '';
+      saveModal.classList.remove('hidden');
+    }
+
+    cancelBtn.addEventListener('click', function() {
+      saveModal.classList.add('hidden');
+      currentGifToSave = null;
+    });
+
+    saveModal.addEventListener('click', function(e) {
+      if (e.target === saveModal) {
+        saveModal.classList.add('hidden');
+        currentGifToSave = null;
+      }
+    });
+
+    saveGifBtn.addEventListener('click', function() {
+      if (!currentGifToSave) return;
+
+      var category = newCategoryInput.value.trim() || categorySelect.value;
+      if (!category) {
+        showToast('Pick a category', 2000);
+        return;
+      }
+
+      var filename = gifFilename.value.trim();
+      if (!filename) {
+        showToast('Enter a filename', 2000);
+        return;
+      }
+      if (!filename.endsWith('.gif')) filename += '.gif';
+
+      saveGifBtn.textContent = 'Saving...';
+      saveGifBtn.disabled = true;
+
+      fetch('http://localhost:4005/save-gif', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: currentGifToSave.images.original.url,
+          category: category,
+          filename: filename
+        })
+      })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.ok) {
+            saveModal.classList.add('hidden');
+            saveGifBtn.textContent = 'Save to Collection';
+            saveGifBtn.disabled = false;
+            currentGifToSave = null;
+            showToast('Saved to ' + category + '/! Reload to see it.', 3000);
+          } else {
+            throw new Error(data.error || 'Save failed');
+          }
+        })
+        .catch(function(err) {
+          saveGifBtn.textContent = 'Save to Collection';
+          saveGifBtn.disabled = false;
+          showToast('Save failed — is save_server running?', 3000);
+        });
+    });
+
+    // --- Keyboard shortcut: Escape closes overlays ---
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (!saveModal.classList.contains('hidden')) {
+          saveModal.classList.add('hidden');
+          currentGifToSave = null;
+        } else if (!searchOverlay.classList.contains('hidden')) {
+          closeSearch();
+        }
+      }
+    });
+  })();
   </script>
 
 </body>

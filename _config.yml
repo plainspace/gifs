@@ -3,3 +3,6 @@ markdown_ext: markdown,mkd,mkdn,md
 sass:
   sass_dir: _sass
   style: compressed
+
+# Get a free API key at https://developers.giphy.com/
+giphy_api_key: HExpRScdYivf3KiZdTtdNTWd8njQ2ksc

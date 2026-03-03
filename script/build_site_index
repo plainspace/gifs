@@ -3,12 +3,16 @@
 require 'builder'
 require 'fileutils'
 require 'yaml'
+require 'json'
 
 # --- CONFIG ---
 OUTPUT_YAML = '_data/static_files.yml'
 OUTPUT_HTML = '_includes/site-index.html'
+PINS_FILE = '_data/pins.json'
 INCLUDE_EXTENSIONS = ['.gif']
-IMPORTANT_DIRS = ['shoresy', 'all the favs', 'goldblum']
+
+# Read pinned collections from pins.json (fall back to empty)
+PINNED_DIRS = File.exist?(PINS_FILE) ? JSON.parse(File.read(PINS_FILE)) : []
 
 # --- COLLECT FILES ---
 def collect_files
@@ -28,13 +32,13 @@ files = collect_files
 # --- MARK IMPORTANT FILES ---
 files.each do |file|
   top_dir = file['path'].split('/').first
-  file['important'] = IMPORTANT_DIRS.include?(top_dir)
+  file['important'] = PINNED_DIRS.include?(top_dir)
 end
 
 # --- SORT FILES ---
 files.sort_by! do |file|
   top_dir = file['path'].split('/').first
-  importance = file['important'] ? IMPORTANT_DIRS.index(top_dir) : IMPORTANT_DIRS.length
+  importance = file['important'] ? PINNED_DIRS.index(top_dir) : PINNED_DIRS.length
   [importance, top_dir.downcase, file['path'].downcase]
 end
 
@@ -50,7 +54,7 @@ File.open(OUTPUT_HTML, 'w') do |f|
   f.puts "<ul>"
 
   grouped = files.group_by { |item| item['path'].split('/').first }
-  ordered_folders = IMPORTANT_DIRS + (grouped.keys - IMPORTANT_DIRS).sort
+  ordered_folders = PINNED_DIRS + (grouped.keys - PINNED_DIRS).sort
 
   ordered_folders.each do |folder|
     next unless grouped[folder]
