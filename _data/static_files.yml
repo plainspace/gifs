@@ -251,6 +251,98 @@
   modified_time: 1764971259
   extname: ".gif"
   important: true
+- path: the bear/bravo-chef.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: the bear/carmy.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/feels-like-armor.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/i-got-it-thank-you.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/i-like-you-so-much.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/i-love-you-but-i-dont-have-time.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/i-need-you-to-respect-yourself.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/ill-do-it.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/she-is-the-best.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/thatll-do.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/thats-helpful.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/this-really-was-almost-perfect.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/we-read-the-room.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/working-together-cph.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: the bear/yes-chef.gif
+  modified_time: 1764971257
+  extname: ".gif"
+  important: true
+- path: big-lebowski/ashes-toss.gif
+  modified_time: 1764971260
+  extname: ".gif"
+  important: true
+- path: big-lebowski/dancing.gif
+  modified_time: 1764971279
+  extname: ".gif"
+  important: true
+- path: big-lebowski/gun.gif
+  modified_time: 1764971279
+  extname: ".gif"
+  important: true
+- path: big-lebowski/no-huh-uh.gif
+  modified_time: 1764971279
+  extname: ".gif"
+  important: true
+- path: big-lebowski/oh-alright.gif
+  modified_time: 1764971260
+  extname: ".gif"
+  important: true
+- path: big-lebowski/polish-my-ball.gif
+  modified_time: 1764971279
+  extname: ".gif"
+  important: true
+- path: big-lebowski/stoned.gif
+  modified_time: 1764971279
+  extname: ".gif"
+  important: true
+- path: big-lebowski/what.gif
+  modified_time: 1764971279
+  extname: ".gif"
+  important: true
 - path: amazed/hepburn-sunglasses-off.gif
   modified_time: 1764971280
   extname: ".gif"
@@ -299,38 +391,6 @@
   modified_time: 1764971279
   extname: ".gif"
   important: false
-- path: big-lebowski/ashes-toss.gif
-  modified_time: 1764971260
-  extname: ".gif"
-  important: false
-- path: big-lebowski/dancing.gif
-  modified_time: 1764971279
-  extname: ".gif"
-  important: false
-- path: big-lebowski/gun.gif
-  modified_time: 1764971279
-  extname: ".gif"
-  important: false
-- path: big-lebowski/no-huh-uh.gif
-  modified_time: 1764971279
-  extname: ".gif"
-  important: false
-- path: big-lebowski/oh-alright.gif
-  modified_time: 1764971260
-  extname: ".gif"
-  important: false
-- path: big-lebowski/polish-my-ball.gif
-  modified_time: 1764971279
-  extname: ".gif"
-  important: false
-- path: big-lebowski/stoned.gif
-  modified_time: 1764971279
-  extname: ".gif"
-  important: false
-- path: big-lebowski/what.gif
-  modified_time: 1764971279
-  extname: ".gif"
-  important: false
 - path: boom/atomic_bomb.gif
   modified_time: 1764971260
   extname: ".gif"
@@ -368,10 +428,6 @@
   extname: ".gif"
   important: false
 - path: boss/breakfast-club-sunglasses.gif
-  modified_time: 1758632939
-  extname: ".gif"
-  important: false
-- path: bring-it/challenge-accepted.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -1483,66 +1539,6 @@
   modified_time: 1764971272
   extname: ".gif"
   important: false
-- path: the bear/bravo-chef.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: the bear/carmy.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/feels-like-armor.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/i-got-it-thank-you.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/i-like-you-so-much.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/i-love-you-but-i-dont-have-time.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/i-need-you-to-respect-yourself.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/ill-do-it.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/she-is-the-best.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/thatll-do.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/thats-helpful.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/this-really-was-almost-perfect.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/we-read-the-room.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/working-together-cph.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
-- path: the bear/yes-chef.gif
-  modified_time: 1764971257
-  extname: ".gif"
-  important: false
 - path: thumbs-up/chuck-norris.gif
   modified_time: 1764971257
   extname: ".gif"
@@ -1644,10 +1640,6 @@
   extname: ".gif"
   important: false
 - path: waiting/rascal.gif
-  modified_time: 1764971247
-  extname: ".gif"
-  important: false
-- path: web-dev/family-guy-css.gif
   modified_time: 1764971247
   extname: ".gif"
   important: false
