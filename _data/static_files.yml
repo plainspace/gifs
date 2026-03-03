@@ -59,6 +59,10 @@
   modified_time: 1764971283
   extname: ".gif"
   important: true
+- path: all the favs/bill-murray-awesome.gif
+  modified_time: 1772502906
+  extname: ".gif"
+  important: true
 - path: all the favs/brando.gif
   modified_time: 1758632938
   extname: ".gif"
@@ -93,6 +97,10 @@
   important: true
 - path: all the favs/espresso.gif
   modified_time: 1764971283
+  extname: ".gif"
+  important: true
+- path: all the favs/funny-celebrity-bill-murray-vckc987opqaco.gif
+  modified_time: 1772502847
   extname: ".gif"
   important: true
 - path: all the favs/i-can't-take-anymore.gif
@@ -343,6 +351,86 @@
   modified_time: 1764971279
   extname: ".gif"
   important: true
+- path: miazaki/haku.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: miazaki/kiki-bread.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: miazaki/kiki.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: miazaki/mononoke.gif
+  modified_time: 1764971274
+  extname: ".gif"
+  important: true
+- path: miazaki/nausicaa-teto.gif
+  modified_time: 1764971274
+  extname: ".gif"
+  important: true
+- path: miazaki/ponyo.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: miazaki/porco-laugh.gif
+  modified_time: 1764971274
+  extname: ".gif"
+  important: true
+- path: miazaki/porco.gif
+  modified_time: 1764971274
+  extname: ".gif"
+  important: true
+- path: miazaki/porco1.gif
+  modified_time: 1764971274
+  extname: ".gif"
+  important: true
+- path: miazaki/soot.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: miazaki/spirited-haku.gif
+  modified_time: 1764971273
+  extname: ".gif"
+  important: true
+- path: miazaki/spirited-noface-rain.gif
+  modified_time: 1764971273
+  extname: ".gif"
+  important: true
+- path: miazaki/spirited-noface-tea.gif
+  modified_time: 1764971273
+  extname: ".gif"
+  important: true
+- path: miazaki/spirited-noface-tracks.gif
+  modified_time: 1764971273
+  extname: ".gif"
+  important: true
+- path: miazaki/spirited-noface.gif
+  modified_time: 1764971273
+  extname: ".gif"
+  important: true
+- path: miazaki/spirited.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: miazaki/totora-pop-up.gif
+  modified_time: 1764971274
+  extname: ".gif"
+  important: true
+- path: miazaki/totoro-little.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: miazaki/totoro-nap.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
+- path: miazaki/totoro.gif
+  modified_time: 1758632940
+  extname: ".gif"
+  important: true
 - path: amazed/hepburn-sunglasses-off.gif
   modified_time: 1764971280
   extname: ".gif"
@@ -424,10 +512,6 @@
   extname: ".gif"
   important: false
 - path: boom/nuke.gif
-  modified_time: 1758632939
-  extname: ".gif"
-  important: false
-- path: boss/breakfast-club-sunglasses.gif
   modified_time: 1758632939
   extname: ".gif"
   important: false
@@ -744,10 +828,6 @@
   extname: ".gif"
   important: false
 - path: disgust/whut.gif
-  modified_time: 1764971260
-  extname: ".gif"
-  important: false
-- path: distracted/squirrel-up-dog-gif_large.gif
   modified_time: 1764971260
   extname: ".gif"
   important: false
@@ -1277,86 +1357,6 @@
   important: false
 - path: matrix/matrix.gif
   modified_time: 1764971274
-  extname: ".gif"
-  important: false
-- path: miazaki/haku.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: miazaki/kiki-bread.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: miazaki/kiki.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: miazaki/mononoke.gif
-  modified_time: 1764971274
-  extname: ".gif"
-  important: false
-- path: miazaki/nausicaa-teto.gif
-  modified_time: 1764971274
-  extname: ".gif"
-  important: false
-- path: miazaki/ponyo.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: miazaki/porco-laugh.gif
-  modified_time: 1764971274
-  extname: ".gif"
-  important: false
-- path: miazaki/porco.gif
-  modified_time: 1764971274
-  extname: ".gif"
-  important: false
-- path: miazaki/porco1.gif
-  modified_time: 1764971274
-  extname: ".gif"
-  important: false
-- path: miazaki/soot.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: miazaki/spirited-haku.gif
-  modified_time: 1764971273
-  extname: ".gif"
-  important: false
-- path: miazaki/spirited-noface-rain.gif
-  modified_time: 1764971273
-  extname: ".gif"
-  important: false
-- path: miazaki/spirited-noface-tea.gif
-  modified_time: 1764971273
-  extname: ".gif"
-  important: false
-- path: miazaki/spirited-noface-tracks.gif
-  modified_time: 1764971273
-  extname: ".gif"
-  important: false
-- path: miazaki/spirited-noface.gif
-  modified_time: 1764971273
-  extname: ".gif"
-  important: false
-- path: miazaki/spirited.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: miazaki/totora-pop-up.gif
-  modified_time: 1764971274
-  extname: ".gif"
-  important: false
-- path: miazaki/totoro-little.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: miazaki/totoro-nap.gif
-  modified_time: 1758632940
-  extname: ".gif"
-  important: false
-- path: miazaki/totoro.gif
-  modified_time: 1758632940
   extname: ".gif"
   important: false
 - path: mind-blown/cinderella-head-explode.gif
